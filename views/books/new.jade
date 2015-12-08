@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1.
+    #{title}
+  form#formAddBook(name="addbook",method="post",action="/books")
+    p Title:
+      br
+      input#inputTitle(type="text",name="title",class="form-control")
+    p Author:
+      br
+      input#inputAuthor(type="text",name="author",class="form-control")
+    p ISBN:
+      br
+      input#inputISBN(type="number",name="isbn",class="form-control")
+    p Year:
+      br
+      input#inputYear(type="number",name="year",class="form-control")
+    p Description:
+      br
+      input#inputDesc(type="text",name="description",class="form-control")
+    p Is it awesome?:
+      input(type="checkbox",name="isAwesome")
+    p
+      button#btnSubmit(type="submit", class="btn btn-primary") Submit

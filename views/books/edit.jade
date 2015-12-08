@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  h1.
+    Book ID #{book._id}
+  form(action='/books/#{book._id}/edit',method='post',name='updatebook',enctype='application/x-www-form-urlencoded')
+    p Title:
+      br
+      input#inputTitle(type='text', value='#{book.title}', name='title', class="form-control")
+    p Author:
+      br 
+      input#inputAuthor(type='text', value='#{book.author}', name='author',class="form-control")
+    p ISBN:
+      br
+      input#inputISBN(type='number', value='#{book.isbn}', name='isbn',class="form-control")
+    p Year:
+      br
+      input#inputYear(type="number", value="#{book.year}", name="year",class="form-control")
+    p Description:
+      br
+      textarea(name="description",class="form-control").
+        #{book.description}
+    p Is it awesome?:
+      input#inputIsAwesome(type='checkbox', name='isAwesome', checked=('#{book.isAwesome}'==='true' ? "checked" : undefined))
+    p 
+      input(type='hidden',value='PUT',name='_method')
+    p 
+      button#btnSubmit(type='submit',class="btn btn-warning").
+        Update

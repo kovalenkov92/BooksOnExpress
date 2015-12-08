@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1.
+    #{title}
+  p
+    a(href="/books/new") Create book
+  ul(class="list-group")
+    - each book, i in books
+      li(class="list-group-item",style="width:50%;display:inline-block")
+        h3(style="color:blue") #{book.title}
+        br
+        span.
+          By: #{book.author}
+        br
+        span.
+          In: #{book.year}
+        br
+        - if (book.isAwesome)
+          p.
+            Its awesome!
+        - else if (!book.isAwesome)
+          p.
+            Its ok.
+        form(action="/books/#{book._id}/edit",method="post",enctype='application/x-www-form-urlencoded')
+          input(type="hidden",value="DELETE",name="_method")
+          button(type='submit',class='btn btn-warning').
+            Delete
+          a(href="/books/#{book._id}/edit") Edit | 
+          a(href="/books/#{book._id}") Show
